@@ -1,0 +1,99 @@
+//Muestra el vector
+void mostrar(int vector[], int tamano)
+{
+
+    for (int i = 0; i < tamano; i++)
+    {
+        cout << "Vector " << "[" << i << "] " << ": " << vector[i] << endl;
+    }
+
+}
+//Muestra el vector invertido pero no lo altera
+void mostrar_invertido(int vector[], int tamano)
+{
+    cout << "------------------" << endl;
+    for (int i = tamano - 1; i >= 0; i--)
+    {
+        cout << vector[i] << " ";
+    }
+
+}
+//Ordena el vector de mayor a menor
+void ordenar_mayor(int vec[], int ta) {
+    float temporal;
+    for (int i = 0; i < ta; i++) {
+        for (int j = 0; j < ta - 1; j++) {
+            if (vec[j] < vec[j + 1]) {
+                temporal = vec[j];
+                vec[j] = vec[j + 1];
+                vec[j + 1] = temporal;
+            }
+        }
+    }
+}
+//Ordena el vector de menor a mayor
+void ordenar_menor(int vector_[], int tamano_) {
+    float temporal;
+
+    for (int i = 0; i < tamano_; i++) {
+        for (int j = 0; j < tamano_ - 1; j++) {
+            if (vector_[j] > vector_[j + 1]) {
+                temporal = vector_[j];
+                vector_[j] = vector_[j + 1];
+                vector_[j + 1] = temporal;
+            }
+        }
+    }
+}
+//Convierte el vector dado a un numero entero
+int vector_a_numero(int vect[], int tamn)
+{
+    int numero;
+    int d, in = 1, s = 1, res = 0;
+    for (int i = tamn - 1; i >= 0; i--) {
+        d = vect[i];
+        res = res + d * in;
+        in = 10 * s;
+        s = s * 10;
+    }
+    return res;
+}
+//Invierte el numero
+int invertir_numero(int numero)
+{
+    int numero_inverso = 0;
+    int resto = 0;
+    int contador = 0;
+
+    while (numero > 0)
+    {
+        resto = numero % 10;
+        numero_inverso = (numero_inverso * 10) + resto;
+        numero = numero / 10;
+        contador++;
+
+    }
+
+    return numero_inverso;
+
+
+}
+//Verifica y muestra si es Capicua
+bool verificar_capicua(int numero)
+{
+    int inverso, comprobacion = 0;
+    bool verificacion;
+    inverso = invertir_numero(numero);
+    if (numero == inverso)
+    {
+        verificacion = true;
+
+        cout << "El numero SI es capicua " << endl;;
+    }
+    else
+    {
+        verificacion = false;
+        cout << "El numero NO es capicua " << endl;;
+    }
+    return verificacion;
+}
